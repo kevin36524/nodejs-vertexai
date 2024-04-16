@@ -80,7 +80,9 @@ export class GenerativeModel {
       getGenerativeModelParams.systemInstruction.role = constants.SYSTEM_ROLE;
     }
     this.systemInstruction = getGenerativeModelParams.systemInstruction;
-    if (this.model.startsWith('models/')) {
+    if (this.model.startsWith('endpoints/')) {
+      this.publisherModelEndpoint = this.model;
+    } else if (this.model.startsWith('models/')) {
       this.publisherModelEndpoint = `publishers/google/${this.model}`;
     } else {
       this.publisherModelEndpoint = `publishers/google/models/${this.model}`;
